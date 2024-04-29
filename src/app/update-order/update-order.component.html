@@ -1,0 +1,213 @@
+    <!-- ============================================================== -->
+    <!-- Start right Content here -->
+    <!-- ============================================================== -->
+    <div class="main-content">
+  
+        <div class="page-content">
+            <div class="container-fluid">
+  
+                <!-- start page title -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                            <h4 class="mb-sm-0 font-size-18">Order Booking</h4>
+                        </div>
+                    </div>
+                </div>
+                <!-- end page title -->
+
+                
+
+                <!-- Customer Form Start-->
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="card">
+                            <div class="card-body">
+
+                                <div aria-live="polite" aria-atomic="true" class="d-flex justify-content-end" [ngClass]="AlertView ? 'd-block' : 'd-none'">
+                                    <div class="toast fade show align-items-center text-white bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+                                        <div class="d-flex justify-content-end">
+                                            <div class="toast-body">
+                                                Record has been submited !!!
+                                            </div>
+                                            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <h4 class="card-title">Update Order</h4>
+                                <p class="card-title-desc">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto, ab?</p>
+                                <form class="needs-validation" novalidate  #datalogin="ngForm" >
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <div class="mb-3">
+                                                <label for="orderBill" class="form-label">Bill Number</label>
+                                                <div class="d-flex">
+                                                    <input type="text" class="form-control" id="orderBill" placeholder="Auto Genrated" required>
+                                                    &nbsp;&nbsp;<button class="btn btn-primary">Search</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5"></div>
+                                        <div class="col-md-4">
+                                            <div class="mb-3 ">
+                                                <label for="orderdate" class="form-label">Auto Date & Time</label>
+                                                <div class="d-flex">
+                                                    <input type="date" class="form-control" id="orderdate" placeholder="Date" required>&nbsp;&nbsp;
+                                                    <input type="time" class="form-control" id="orderdate" placeholder="Date" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="mb-3">
+                                                <div class="mb-3">
+                                                    <label for="OrderName" class="form-label">First Name</label>
+                                                    <input type="text" class="form-control" id="OrderName" placeholder="Auto Name" disabled required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="mb-3">
+                                                <label for="OrderName" class="form-label">Last Name</label>
+                                                <input type="text" class="form-control" id="OrderName" placeholder="Auto Name" disabled required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="mb-3">
+                                                <label for="OrderContact" class="form-label">Contact</label>
+                                                <input type="text" class="form-control" id="OrderContact" placeholder="Auto Contact" disabled required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <div class="mb-3">
+                                                <label for="orderWallet" class="form-label">Wallet</label>
+                                                <input type="text" class="form-control" id="orderWallet" placeholder="Auto Wallet" disabled required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="mb-3">
+                                                <label for="orderBox" class="form-label">Box</label>
+                                                <input type="text" class="form-control" id="orderBox" placeholder="Auto Box" disabled required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="mb-3">
+                                                <label for="orderCustomAdd" class="form-label">Address</label>
+                                                <input type="text" class="form-control" id="orderCustomAdd" placeholder="Auto Address" disabled required>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <hr style="border-top: 1px dashed rgb(58, 58, 58);">
+                                        <div class="col-md-12">
+                                            <table class="table table-bordered text-center">
+                                                <tbody class="table-dark">
+                                                    <tr>
+                                                        <th>Sr.</th>
+                                                        <th>Product Name</th>
+                                                        <th>Box/Nug</th>
+                                                        <th>Total Weight(KG/grm)</th>
+                                                        <th>Goods Wight</th>
+                                                        <th>Total Bill</th>
+                                                    </tr>
+                                                </tbody>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>1.</td>
+                                                        <td>
+                                                            <select name="" id="" class="form-select">
+                                                                <option value="Banana" >--Banana--- </option>
+                                                                <option value="Banana" >Fruit 1 </option>
+                                                                <option value="Banana" >Fruit 2</option>
+                                                            </select>
+                                                        </td>
+                                                        <td><input type="text" class="form-control"></td>
+                                                        <td><input type="text" class="form-control"></td>
+                                                        <td><input type="text" class="form-control"></td>
+                                                        <td><input type="text" class="form-control"></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <hr style="border-top: 1px dashed rgb(58, 58, 58);">
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <h4 class="card-title pb-2 text-center text-decoration-underline fs-5 fw-bold">- - KHATA ENTRY - -</h4>
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <input type="text" name="" id="" placeholder="Pay Amount" class="form-control">
+                                                </div>
+                                                <div class="col-md-6"></div>
+                                                <div class="col-md-3">
+                                                    <input type="text" name="" id="" placeholder="Submit Box" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <div class="p-3">
+                                                        <label for="">6548.00/-</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6"></div>
+                                                <div class="col-md-3">
+                                                    <div class="p-3">
+                                                        <label for="">654/Nug</label>
+                                                    </div>
+                                                </div>
+                                            </div>    
+                                        <!-- <br> -->
+                                            
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        <button class="btn btn-primary" type="submit">Save & Print</button>
+                                        <button class="btn btn-danger" type="reset">Clear</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <!-- end card -->
+                    </div> <!-- end col -->
+
+                   
+                    <!-- end row -->
+
+                </div>
+                <!-- Customer Form End-->
+
+
+
+                
+
+            </div>
+            <!-- container-fluid -->
+        </div>
+        <!-- End Page-content -->
+  
+      
+       
+  
+        <footer class="footer">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <script>document.write(new Date().getFullYear())</script> © .
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="text-sm-end d-none d-sm-block">
+                            Design & Develop - by Shree Ram
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <!-- end main content-->
+  
