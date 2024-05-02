@@ -185,6 +185,11 @@
                         </button>
                       </td>
                     </tr>
+                    <tr *ngIf="datatable.length === 0">
+                      <td colspan="15" class="text-center text-dark">
+                        No Data Found
+                      </td>
+                    </tr>
                   </tbody>
                 </table>
               </div>

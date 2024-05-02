@@ -89,34 +89,42 @@ export class CustomerWorkingReportListComponent implements OnInit {
     });
   }
 
+  normalizeString(input: string): string {
+    return input.replace(/\s+/g, '').toLowerCase();
+  }
+
   searchOrder(event: any) {
-    // Filter function that checks each record against all provided filters
-    this.datatable = this.datatable.filter((order: any) => {
-      const validName = event.searchName
-        ? order.name === event.searchName
-        : true;
-      const validStatus = event.searchStatus
-        ? order.status === event.searchStatus
-        : true;
+    this.getOrdersJson();
+    setTimeout(() => {
+      this.datatable = this.datatable.filter((order: any) => {
+        const validName = event.searchName
+          ? this.normalizeString(order.name) ===
+            this.normalizeString(event.searchName)
+          : true;
+        const validStatus = event.searchStatus
+          ? this.normalizeString(order.status) ===
+            this.normalizeString(event.searchStatus)
+          : true;
 
-      let validFromDate = true;
-      let validToDate = true;
+        let validFromDate = true;
+        let validToDate = true;
 
-      if (event.fromDate) {
-        const from = new Date(event.fromDate);
-        const orderDate = new Date(order.autoDate);
-        validFromDate = orderDate >= from;
-      }
+        if (event.fromDate) {
+          const from = new Date(event.fromDate);
+          const orderDate = new Date(order.autoDate);
+          validFromDate = orderDate >= from;
+        }
 
-      if (event.toDate) {
-        const to = new Date(event.toDate);
-        to.setHours(23, 59, 59, 999); // Include the whole day
-        const orderDate = new Date(order.autoDate);
-        validToDate = orderDate <= to;
-      }
+        if (event.toDate) {
+          const to = new Date(event.toDate);
+          to.setHours(23, 59, 59, 999); // Include the whole day
+          const orderDate = new Date(order.autoDate);
+          validToDate = orderDate <= to;
+        }
 
-      return validName && validStatus && validFromDate && validToDate;
-    });
+        return validName && validStatus && validFromDate && validToDate;
+      });
+    }, 2000);
   }
 
   printPage() {
