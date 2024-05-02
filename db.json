@@ -1,0 +1,739 @@
+{
+  "customerManagement": [
+    {
+      "id": "2fa1",
+      "firstName": "PRASHANT",
+      "LastName": "KASHYAP",
+      "custContact": "988954987",
+      "altcontact": "6879465874",
+      "Wallet": "241",
+      "custBox": "16",
+      "custAddres": "46/906/D1 New Abadi nagla ajeeta agra",
+      "custlandMark": "mandir",
+      "custCity": "Agra"
+    },
+    {
+      "id": "4af5",
+      "firstName": "PRASHANT",
+      "LastName": "KASHYAP",
+      "custContact": "988954987",
+      "altcontact": "6879465874",
+      "Wallet": "231",
+      "custBox": "16",
+      "custAddres": "46/906/D1 New Abadi nagla ajeeta agra",
+      "custlandMark": "mandir",
+      "custCity": "Agra"
+    },
+    {
+      "id": "8862",
+      "firstName": "Deepak ",
+      "LastName": "Kumar ",
+      "custContact": 98749846544654,
+      "altcontact": 684687496874968,
+      "Wallet": 75000,
+      "custBox": 2860,
+      "custAddres": "Sanjay place ",
+      "custlandMark": "md jain collage ",
+      "custCity": "Agra",
+      "totalDue": 3000,
+      "totalBox": 500
+    },
+    {
+      "id": "604b",
+      "firstName": "Shivani ",
+      "LastName": "Verma",
+      "custContact": 98798798798,
+      "altcontact": 8987987987,
+      "Wallet": 66100,
+      "custBox": 68,
+      "custAddres": "lkjasdf",
+      "custlandMark": "laksjdf",
+      "custCity": "lkajsdf",
+      "totalDue": 5000,
+      "totalBox": 655
+    },
+    {
+      "id": "V8ojR9P",
+      "firstName": "Booshna ",
+      "LastName": "Arthy",
+      "custContact": 98798798798,
+      "altcontact": 8987987987,
+      "Wallet": 2100,
+      "custBox": 38,
+      "custAddres": "lkjasdf",
+      "custlandMark": "laksjdf",
+      "custCity": "lkajsdf",
+      "totalDue": 5000,
+      "totalBox": 655
+    }
+  ],
+  "orders": [
+    {
+      "id": 1,
+      "orderId": "#SKU4522",
+      "customerId": "604b",
+      "status": "Due Pay",
+      "autoDate": "2024-04-29",
+      "autoTime": "09.19",
+      "items": [
+        {
+          "id": "1",
+          "boxNug": "20",
+          "totalWeight": "100",
+          "goodsWeight": 1000,
+          "totalBill": "1000",
+          "payAmount": "500",
+          "submitBox": "1000"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "orderId": "#SKU4523",
+      "autoDate": "2024-04-29",
+      "autoTime": "01:41:58",
+      "status": "Due Pay",
+      "customerId": "8862",
+      "items": [
+        {
+          "id": "1",
+          "boxNug": "200",
+          "totalWeight": "1000",
+          "goodsWeight": 600,
+          "totalBill": "5000",
+          "payAmount": null,
+          "submitBox": null
+        }
+      ]
+    },
+    {
+      "orderId": "#SKU4524",
+      "autoDate": "2024-04-29",
+      "autoTime": "01:49:16",
+      "status": "Fully Paid",
+      "customerId": "V8ojR9P",
+      "items": [
+        {
+          "id": "1",
+          "boxNug": "100",
+          "totalWeight": "1000",
+          "goodsWeight": 800,
+          "totalBill": "1000",
+          "payAmount": "1000",
+          "submitBox": "100"
+        }
+      ],
+      "id": 3
+    },
+    {
+      "orderId": "#SKU4525",
+      "autoDate": "2024-04-30",
+      "autoTime": "17:30:28",
+      "status": "Not Paid",
+      "customerId": "8862",
+      "items": [
+        {
+          "id": "1",
+          "boxNug": "20",
+          "totalWeight": "1000",
+          "goodsWeight": 960,
+          "totalBill": "5000",
+          "payAmount": "0",
+          "submitBox": "10"
+        }
+      ],
+      "id": 4
+    },
+    {
+      "orderId": "#SKU4526",
+      "autoDate": "2024-04-30",
+      "autoTime": "17:38:14",
+      "status": "Fully Paid",
+      "customerId": "604b",
+      "items": [
+        {
+          "id": "1",
+          "boxNug": "100",
+          "totalWeight": "1000",
+          "goodsWeight": 800,
+          "totalBill": "500",
+          "payAmount": "1000",
+          "submitBox": "10"
+        }
+      ],
+      "id": 5
+    },
+    {
+      "orderId": "#SKU4527",
+      "status": "Due Pay",
+      "autoDate": "2024-04-30",
+      "autoTime": "17:43:02",
+      "customerId": "4af5",
+      "items": [
+        {
+          "id": "1",
+          "boxNug": "50",
+          "totalWeight": "1000",
+          "goodsWeight": 900,
+          "totalBill": "5000",
+          "payAmount": "1000",
+          "submitBox": "20"
+        }
+      ],
+      "id": 6
+    },
+    {
+      "orderId": "#SKU4528",
+      "autoDate": "2024-05-01",
+      "status": "Due Pay",
+      "autoTime": "14:15:35",
+      "customerId": "604b",
+      "items": [
+        {
+          "id": "1",
+          "boxNug": "10",
+          "totalWeight": "1000",
+          "goodsWeight": 980,
+          "totalBill": "20000",
+          "payAmount": "15000",
+          "submitBox": "500"
+        }
+      ],
+      "id": 7
+    },
+    {
+      "orderId": "#SKU4535",
+      "autoDate": "2024-05-01",
+      "autoTime": "22:44:04",
+      "status": "Due Pay",
+      "customerId": "2fa1",
+      "items": [
+        {
+          "id": "1",
+          "boxNug": "20",
+          "totalWeight": "1000",
+          "goodsWeight": 960,
+          "totalBill": "10000",
+          "payAmount": "1000",
+          "submitBox": "16"
+        }
+      ],
+      "id": 17
+    },
+    {
+      "orderId": "#SKU4536",
+      "autoDate": "2024-05-01",
+      "autoTime": "22:52:27",
+      "customerId": "V8ojR9P",
+      "status": "Due Pay",
+      "items": [
+        {
+          "id": "1",
+          "boxNug": "200",
+          "totalWeight": "1000",
+          "goodsWeight": 600,
+          "totalBill": "55000",
+          "payAmount": "53000",
+          "submitBox": "10"
+        }
+      ],
+      "id": 18
+    },
+    {
+      "orderId": "#SKU4536",
+      "autoDate": "2024-05-01",
+      "autoTime": "22:52:27",
+      "customerId": "V8ojR9P",
+      "status": "Due Pay",
+      "items": [
+        {
+          "id": "1",
+          "boxNug": "200",
+          "totalWeight": "1000",
+          "goodsWeight": 600,
+          "totalBill": "55000",
+          "payAmount": "53000",
+          "submitBox": "10"
+        }
+      ],
+      "id": 19
+    },
+    {
+      "orderId": "#SKU4537",
+      "autoDate": "2024-05-01",
+      "autoTime": "22:54:08",
+      "customerId": "4af5",
+      "status": "Due Pay",
+      "items": [
+        {
+          "id": "1",
+          "boxNug": "20",
+          "totalWeight": "1000",
+          "goodsWeight": 960,
+          "totalBill": "55000",
+          "payAmount": "1000",
+          "submitBox": "10"
+        }
+      ],
+      "id": 20
+    },
+    {
+      "orderId": "#SKU4537",
+      "autoDate": "2024-05-01",
+      "status": "Due Pay",
+      "autoTime": "22:54:08",
+      "customerId": "4af5",
+      "items": [
+        {
+          "id": "1",
+          "boxNug": "20",
+          "totalWeight": "1000",
+          "goodsWeight": 960,
+          "totalBill": "55000",
+          "payAmount": "1000",
+          "submitBox": "10"
+        }
+      ],
+      "id": 21
+    },
+    {
+      "orderId": "#SKU4538",
+      "autoDate": "2024-05-01",
+      "autoTime": "23:02:42",
+      "customerId": "V8ojR9P",
+      "status": "Due Pay",
+      "items": [
+        {
+          "id": "1",
+          "boxNug": "10",
+          "totalWeight": "1000",
+          "goodsWeight": 980,
+          "totalBill": "2000",
+          "payAmount": "1000",
+          "submitBox": "5"
+        }
+      ],
+      "id": 22
+    },
+    {
+      "orderId": "#SKU4538",
+      "autoDate": "2024-05-01",
+      "status": "Due Pay",
+      "autoTime": "23:02:42",
+      "customerId": "V8ojR9P",
+      "items": [
+        {
+          "id": "1",
+          "boxNug": "10",
+          "totalWeight": "1000",
+          "goodsWeight": 980,
+          "totalBill": "2000",
+          "payAmount": "1000",
+          "submitBox": "5"
+        }
+      ],
+      "id": 23
+    },
+    {
+      "orderId": "#SKU4539",
+      "autoDate": "2024-05-01",
+      "autoTime": "00:45:09",
+      "status": "Due Pay",
+      "customerId": "4af5",
+      "items": [
+        {
+          "id": "1",
+          "boxNug": "10",
+          "totalWeight": "500",
+          "goodsWeight": 480,
+          "totalBill": "10000",
+          "payAmount": "1000",
+          "submitBox": "6"
+        }
+      ],
+      "id": 24
+    },
+    {
+      "orderId": "#SKU4539",
+      "autoDate": "2024-05-01",
+      "autoTime": "00:45:09",
+      "status": "Due Pay",
+      "customerId": "4af5",
+      "items": [
+        {
+          "id": "1",
+          "boxNug": "10",
+          "totalWeight": "500",
+          "goodsWeight": 480,
+          "totalBill": "10000",
+          "payAmount": "1000",
+          "submitBox": "6"
+        }
+      ],
+      "id": 25
+    },
+    {
+      "orderId": "#SKU4540",
+      "autoDate": "2024-05-01",
+      "autoTime": "00:54:30",
+      "status": "Fully Paid",
+      "customerId": "604b",
+      "items": [
+        {
+          "id": "1",
+          "boxNug": "10",
+          "totalWeight": "100",
+          "goodsWeight": "800",
+          "totalBill": "500",
+          "payAmount": "500",
+          "submitBox": "20"
+        }
+      ],
+      "id": 26
+    },
+    {
+      "orderId": "#SKU4541",
+      "autoDate": "2024-05-01",
+      "autoTime": "00:56:00",
+      "status": "Due Pay",
+      "customerId": "604b",
+      "items": [
+        {
+          "id": "1",
+          "boxNug": "10",
+          "totalWeight": "100",
+          "goodsWeight": "800",
+          "totalBill": "500",
+          "payAmount": "400",
+          "submitBox": "2"
+        }
+      ],
+      "id": 27
+    },
+    {
+      "orderId": "#SKU4541",
+      "autoDate": "2024-05-01",
+      "autoTime": "00:56:00",
+      "status": "Due Pay",
+      "customerId": "604b",
+      "items": [
+        {
+          "id": "1",
+          "boxNug": "10",
+          "totalWeight": "100",
+          "goodsWeight": "800",
+          "totalBill": "500",
+          "payAmount": "400",
+          "submitBox": "2"
+        }
+      ],
+      "id": 28
+    },
+    {
+      "orderId": "#SKU4542",
+      "autoDate": "2024-05-01",
+      "autoTime": "01:00:21",
+      "status": "Due Pay",
+      "customerId": "8862",
+      "items": [
+        {
+          "id": "1",
+          "boxNug": "10",
+          "totalWeight": "100",
+          "goodsWeight": "800",
+          "totalBill": "500",
+          "payAmount": "400",
+          "submitBox": "2"
+        }
+      ],
+      "id": 29
+    },
+    {
+      "orderId": "#SKU4543",
+      "autoDate": "2024-05-01",
+      "autoTime": "01:12:08",
+      "status": "Fully Paid",
+      "customerId": "2fa1",
+      "items": [
+        {
+          "id": "1",
+          "boxNug": "10",
+          "totalWeight": "1000",
+          "goodsWeight": 980,
+          "totalBill": "1000",
+          "payAmount": "1000",
+          "submitBox": "10"
+        }
+      ],
+      "id": 30
+    },
+    {
+      "orderId": "#SKU4544",
+      "autoDate": "2024-05-01",
+      "autoTime": "01:14:30",
+      "status": "Due Pay",
+      "customerId": "2fa1",
+      "items": [
+        {
+          "id": "1",
+          "boxNug": "20",
+          "totalWeight": "1000",
+          "goodsWeight": 960,
+          "totalBill": "500",
+          "payAmount": "1000",
+          "submitBox": "10"
+        }
+      ],
+      "id": 31
+    },
+    {
+      "orderId": "#SKU4545",
+      "autoDate": "2024-05-02",
+      "autoTime": "08:01:37",
+      "status": "Due Pay",
+      "customerId": "604b",
+      "items": [
+        {
+          "id": "1",
+          "boxNug": "10",
+          "totalWeight": "1000",
+          "goodsWeight": 980,
+          "totalBill": "5000",
+          "payAmount": "4000",
+          "submitBox": "2"
+        }
+      ],
+      "id": 32
+    },
+    {
+      "orderId": "#SKU4546",
+      "autoDate": "2024-05-02",
+      "autoTime": "08:04:53",
+      "status": "Due Pay",
+      "customerId": "V8ojR9P",
+      "items": [
+        {
+          "id": "1",
+          "boxNug": "100",
+          "totalWeight": "1000",
+          "goodsWeight": 800,
+          "totalBill": "55000",
+          "payAmount": "1000",
+          "submitBox": "2"
+        }
+      ],
+      "id": 33
+    },
+    {
+      "orderId": "#SKU4547",
+      "autoDate": "2024-05-02",
+      "autoTime": "08:06:34",
+      "status": "Due Pay",
+      "customerId": "V8ojR9P",
+      "items": [
+        {
+          "id": "1",
+          "boxNug": "100",
+          "totalWeight": "1000",
+          "goodsWeight": 800,
+          "totalBill": "55000",
+          "payAmount": "1000",
+          "submitBox": "2"
+        }
+      ],
+      "id": 34
+    },
+    {
+      "orderId": "#SKU4548",
+      "autoDate": "2024-05-02",
+      "autoTime": "08:10:27",
+      "status": "Due Pay",
+      "customerId": "V8ojR9P",
+      "items": [
+        {
+          "id": "1",
+          "boxNug": "100",
+          "totalWeight": "1000",
+          "goodsWeight": 800,
+          "totalBill": "20000",
+          "payAmount": "15000",
+          "submitBox": "2"
+        }
+      ],
+      "id": 35
+    },
+    {
+      "orderId": "#SKU4549",
+      "autoDate": "2024-05-02",
+      "autoTime": "08:12:26",
+      "status": "Due Pay",
+      "customerId": "V8ojR9P",
+      "items": [
+        {
+          "id": "1",
+          "boxNug": "10",
+          "totalWeight": "1000",
+          "goodsWeight": 980,
+          "totalBill": "5000",
+          "payAmount": "3000",
+          "submitBox": "2"
+        }
+      ],
+      "id": 36
+    },
+    {
+      "orderId": "#SKU4550",
+      "autoDate": "2024-05-02",
+      "autoTime": "08:27:36",
+      "status": "Due Pay",
+      "customerId": "8862",
+      "items": [
+        {
+          "id": "1",
+          "boxNug": "10",
+          "totalWeight": "1000",
+          "goodsWeight": 980,
+          "totalBill": "5000",
+          "payAmount": "1000",
+          "submitBox": "2"
+        }
+      ],
+      "id": 37
+    },
+    {
+      "orderId": "#SKU4551",
+      "autoDate": "2024-05-02",
+      "autoTime": "08:55:14",
+      "status": "Due Pay",
+      "customerId": "V8ojR9P",
+      "items": [
+        {
+          "id": "1",
+          "boxNug": "20",
+          "totalWeight": "1000",
+          "goodsWeight": 960,
+          "totalBill": "5000",
+          "payAmount": null,
+          "submitBox": null
+        }
+      ],
+      "id": 38
+    },
+    {
+      "orderId": "#SKU4552",
+      "autoDate": "2024-05-02",
+      "autoTime": "09:26:32",
+      "status": "Due Pay",
+      "customerId": "8862",
+      "items": [
+        {
+          "id": "1",
+          "boxNug": "10",
+          "totalWeight": "1000",
+          "goodsWeight": 980,
+          "totalBill": "5000",
+          "payAmount": "2000",
+          "submitBox": null
+        }
+      ],
+      "id": 39
+    },
+    {
+      "orderId": "#SKU4553",
+      "autoDate": "2024-05-02",
+      "autoTime": "09:30:38",
+      "status": "Due Pay",
+      "customerId": "V8ojR9P",
+      "items": [
+        {
+          "id": "1",
+          "boxNug": "100",
+          "totalWeight": "1000",
+          "goodsWeight": 800,
+          "totalBill": "2000",
+          "payAmount": "1000",
+          "submitBox": null
+        }
+      ],
+      "id": 40
+    },
+    {
+      "orderId": "#SKU4554",
+      "autoDate": "2024-05-02",
+      "autoTime": "09:36:48",
+      "status": "Due Pay",
+      "customerId": "V8ojR9P",
+      "items": [
+        {
+          "id": "1",
+          "boxNug": "20",
+          "totalWeight": "1000",
+          "goodsWeight": 960,
+          "totalBill": "5000",
+          "payAmount": "3000",
+          "submitBox": null
+        }
+      ],
+      "id": 41
+    },
+    {
+      "orderId": "#SKU4554",
+      "autoDate": "2024-05-02",
+      "autoTime": "09:36:48",
+      "status": "Due Pay",
+      "customerId": "V8ojR9P",
+      "items": [
+        {
+          "id": "1",
+          "boxNug": "20",
+          "totalWeight": "1000",
+          "goodsWeight": 960,
+          "totalBill": "5000",
+          "payAmount": "3000",
+          "submitBox": "2"
+        }
+      ],
+      "id": 42
+    },
+    {
+      "orderId": "#SKU4555",
+      "autoDate": "2024-05-02",
+      "autoTime": "12:07:32",
+      "status": "Due Pay",
+      "customerId": "604b",
+      "items": [
+        {
+          "id": "1",
+          "boxNug": "20",
+          "totalWeight": "1000",
+          "goodsWeight": 960,
+          "totalBill": "10000",
+          "payAmount": "4000",
+          "submitBox": "2"
+        }
+      ],
+      "id": 43
+    }
+  ],
+  "products": [
+    {
+      "id": "1",
+      "productName": "Banana"
+    }
+  ],
+  "comments": [
+    {
+      "id": "1",
+      "text": "a comment about post 1",
+      "postId": "1"
+    },
+    {
+      "id": "2",
+      "text": "another comment about post 1",
+      "postId": "1"
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

@@ -9,11 +9,11 @@ import { CustomerListComponent } from './customer-list/customer-list.component';
 import { CustomerNewOrderComponent } from './customer-new-order/customer-new-order.component';
 import { CustomerWorkingReportListComponent } from './customer-working-report-list/customer-working-report-list.component';
 import { MainmenuComponent } from './mainmenu/mainmenu.component';
-
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { FormsModule } from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
-import { UpdateOrderComponent } from './update-order/update-order.component'
+import { HttpClientModule } from '@angular/common/http';
+import { UpdateOrderComponent } from './update-order/update-order.component';
 
 @NgModule({
   declarations: [
@@ -24,13 +24,14 @@ import { UpdateOrderComponent } from './update-order/update-order.component'
     CustomerNewOrderComponent,
     CustomerWorkingReportListComponent,
     MainmenuComponent,
-    UpdateOrderComponent
+    UpdateOrderComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
   ],
   exports: [
     AppComponent,
@@ -38,9 +39,9 @@ import { UpdateOrderComponent } from './update-order/update-order.component'
     CustomerManagComponent,
     CustomerListComponent,
     CustomerNewOrderComponent,
-    CustomerWorkingReportListComponent
+    CustomerWorkingReportListComponent,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
