@@ -50,12 +50,7 @@
                 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto,
                 ab?
               </p>
-              <form
-                class="needs-validation"
-                novalidate
-                #datalogin="ngForm"
-                (ngSubmit)="saveOrder()"
-              >
+              <form class="needs-validation" novalidate #datalogin="ngForm">
                 <div class="row">
                   <div class="col-md-3">
                     <div class="mb-3">
@@ -73,6 +68,7 @@
                           required
                         />
                         &nbsp;&nbsp;<button
+                          type="button"
                           class="btn btn-primary"
                           (click)="searchOrder()"
                         >
@@ -249,7 +245,9 @@
                           <td>
                             <input
                               type="text"
-                              (focusout)="calculateGoodsWeight()"
+                              (focusout)="
+                                calculateGoodsWeight(); updateBoxCount()
+                              "
                               formControlName="box"
                               name="box"
                               class="form-control"
@@ -276,6 +274,7 @@
                             <input
                               type="text"
                               formControlName="totalBill"
+                              (focusout)="calculateDueBill()"
                               name="totalBill"
                               class="form-control"
                             />
@@ -294,52 +293,56 @@
                     >
                       - - KHATA ENTRY - -
                     </h4>
-                    <div class="row">
-                      <div class="col-md-3">
-                        <input
-                          type="text"
-                          name="payAmount"
-                          (keydown)="resetDueAmount()"
-                          (focusout)="calculateDueAmount()"
-                          formControlName="payAmount"
-                          id="payAmount"
-                          placeholder="Pay Amount"
-                          class="form-control"
-                        />
-                      </div>
-                      <div class="col-md-6"></div>
-                      <div class="col-md-3">
-                        <input
-                          type="text"
-                          name="submitBox"
-                          formControlName="submitBox"
-                          id="submitBox"
-                          (focusout)="calculateBoxCount()"
-                          (keydown)="resetBox()"
-                          placeholder="Submit Box"
-                          class="form-control"
-                        />
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-3">
-                        <div class="p-3">
-                          <b for="">
-                            Total Due Amount:
-                            {{ customerForm?.get("wallet")?.value }}/-</b
-                          >
+                    <form [formGroup]="productForm">
+                      <div class="row">
+                        <div class="col-md-3">
+                          <input
+                            type="text"
+                            name="payAmount"
+                            (keydown)="resetDueAmount()"
+                            (focusout)="calculateDueAmount()"
+                            formControlName="payAmount"
+                            id="payAmount"
+                            placeholder="Pay Amount"
+                            class="form-control"
+                          />
+                        </div>
+                        <div class="col-md-6"></div>
+                        <div class="col-md-3">
+                          <input
+                            type="text"
+                            name="submitBox"
+                            formControlName="submitBox"
+                            id="submitBox"
+                            (focusout)="calculateBoxCount()"
+                            (keydown)="resetBox()"
+                            placeholder="Submit Box"
+                            class="form-control"
+                          />
                         </div>
                       </div>
-                      <div class="col-md-6"></div>
-                      <div class="col-md-3">
-                        <div class="p-3">
-                          <b for=""
-                            >Total Due Box
-                            {{ customerForm?.get("box")?.value }}/Nug</b
-                          >
+                    </form>
+                    <form [formGroup]="customerForm">
+                      <div class="row">
+                        <div class="col-md-3">
+                          <div class="p-3">
+                            <b for="">
+                              Total Due Amount:
+                              {{ customerForm?.get("wallet")?.value }}/-</b
+                            >
+                          </div>
+                        </div>
+                        <div class="col-md-6"></div>
+                        <div class="col-md-3">
+                          <div class="p-3">
+                            <b for=""
+                              >Total Due Box
+                              {{ customerForm?.get("box")?.value }}/Nug</b
+                            >
+                          </div>
                         </div>
                       </div>
-                    </div>
+                    </form>
                     <!-- <br> -->
                   </div>
                 </div>

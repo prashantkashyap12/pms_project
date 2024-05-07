@@ -20,6 +20,8 @@ export class UpdateOrderComponent implements OnInit {
   totalDue: any;
   totalBox: any;
   AlertView = false;
+  totalBillForRef: any;
+  totalBoxForRef: any;
   constructor(private _http: HttpClient, private fb: FormBuilder) {}
   ngOnInit(): void {
     this.customerForm = this.fb.group({
@@ -75,8 +77,50 @@ export class UpdateOrderComponent implements OnInit {
         goodsWeight: selectedOrder[0].items[0].goodsWeight,
         totalBill: selectedOrder[0].items[0].totalBill,
       });
+
+      this.totalBillForRef = selectedOrder[0].items[0].totalBill;
+      this.totalBoxForRef = selectedOrder[0].items[0].boxNug;
       this.selectCustomer();
       console.log(selectedOrder, 'ORDER');
+    }
+  }
+
+  calculateDueBill() {
+    const totalBill = parseFloat(this.productForm.get('totalBill').value) || 0;
+    if (this.totalBillForRef != totalBill) {
+      if (totalBill > this.totalBillForRef) {
+        let diff = totalBill - this.totalBillForRef;
+        const existingDue =
+          parseFloat(this.customerForm.get('wallet').value) || 0;
+        const currentDue = diff + existingDue;
+        this.customerForm.patchValue({
+          wallet: currentDue,
+        });
+      }
+      if (totalBill < this.totalBillForRef) {
+        let diff = this.totalBillForRef - totalBill;
+        const existingDue =
+          parseFloat(this.customerForm.get('wallet').value) || 0;
+        const currentDue = existingDue - diff;
+        this.customerForm.patchValue({
+          wallet: currentDue,
+        });
+      }
+    }
+  }
+
+  updateBoxCount() {
+    const currentBox = parseFloat(this.productForm.get('box').value) || 0;
+
+    if (currentBox > this.totalBoxForRef) {
+      let diff = currentBox - this.totalBoxForRef;
+      const existingDueBox =
+        parseFloat(this.customerForm.get('box').value) || 0;
+
+      const currentDue = diff + existingDueBox;
+      this.customerForm.patchValue({
+        box: currentDue,
+      });
     }
   }
 
@@ -166,6 +210,7 @@ export class UpdateOrderComponent implements OnInit {
       });
     }
   }
+
   calculateBoxCount() {
     if (parseFloat(this.productForm.get('submitBox').value)) {
       const currentBox = parseFloat(this.productForm.get('box').value) || 0;
@@ -214,13 +259,15 @@ export class UpdateOrderComponent implements OnInit {
     }
 
     if (
-      this.customerForm?.get('wallet')?.value ||
-      this.customerForm?.get('box')?.value
+      this.productForm.get('payAmount').value ||
+      this.productForm.get('submitBox').value
     ) {
       this.customerList.filter((ele: any) => {
         if (ele.id == this.customerForm.value.selectCustomer) {
           ele['Wallet'] = this.customerForm?.get('wallet')?.value;
           ele['custBox'] = this.customerForm?.get('box')?.value;
+          console.log(ele, 'customer');
+
           this._http
             .put(this.customers + '/' + ele.id, ele)
             .subscribe((res) => {
