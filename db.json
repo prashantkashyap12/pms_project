@@ -18,8 +18,8 @@
       "LastName": "KASHYAP",
       "custContact": "988954987",
       "altcontact": "6879465874",
-      "Wallet": "231",
-      "custBox": "16",
+      "Wallet": 0,
+      "custBox": 0,
       "custAddres": "46/906/D1 New Abadi nagla ajeeta agra",
       "custlandMark": "mandir",
       "custCity": "Agra"
@@ -188,10 +188,11 @@
       "id": 5
     },
     {
+      "id": 6,
       "orderId": "#SKU4527",
-      "status": "Due Pay",
       "autoDate": "2024-04-30",
       "autoTime": "17:43:02",
+      "status": "Due Pay",
       "customerId": "4af5",
       "items": [
         {
@@ -200,11 +201,10 @@
           "totalWeight": "1000",
           "goodsWeight": 900,
           "totalBill": "5000",
-          "payAmount": "1000",
-          "submitBox": "20"
+          "payAmount": "5231",
+          "submitBox": "66"
         }
-      ],
-      "id": 6
+      ]
     },
     {
       "id": 7,

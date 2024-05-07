@@ -243,7 +243,7 @@
                             <input
                               type="text"
                               name="box"
-                              (focusout)="calculateGoodsWeight()"
+                              (change)="calculateGoodsWeight()"
                               formControlName="box"
                               class="form-control"
                             />
@@ -251,7 +251,7 @@
                           <td>
                             <input
                               type="text"
-                              (focusout)="calculateGoodsWeight()"
+                              (change)="calculateGoodsWeight()"
                               name="totalWeight"
                               formControlName="totalWeight"
                               class="form-control"
@@ -294,7 +294,7 @@
                             type="text"
                             name="payAmount"
                             (keydown)="resetDueAmount()"
-                            (focusout)="calculateDueAmount()"
+                            (change)="calculateDueAmount()"
                             formControlName="payAmount"
                             id="payAmount"
                             placeholder="Pay Amount"
@@ -308,7 +308,7 @@
                             name="submitBox"
                             formControlName="submitBox"
                             id="submitBox"
-                            (focusout)="calculateBoxCount()"
+                            (change)="calculateBoxCount()"
                             (keydown)="resetBox()"
                             placeholder="Submit Box"
                             class="form-control"

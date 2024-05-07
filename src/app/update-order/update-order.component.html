@@ -245,7 +245,7 @@
                           <td>
                             <input
                               type="text"
-                              (focusout)="
+                              (change)="
                                 calculateGoodsWeight(); updateBoxCount()
                               "
                               formControlName="box"
@@ -256,7 +256,7 @@
                           <td>
                             <input
                               type="text"
-                              (focusout)="calculateGoodsWeight()"
+                              (change)="calculateGoodsWeight()"
                               formControlName="totalWeight"
                               name="totalWeight"
                               class="form-control"
@@ -274,7 +274,7 @@
                             <input
                               type="text"
                               formControlName="totalBill"
-                              (focusout)="calculateDueBill()"
+                              (change)="calculateDueBill()"
                               name="totalBill"
                               class="form-control"
                             />
@@ -300,7 +300,7 @@
                             type="text"
                             name="payAmount"
                             (keydown)="resetDueAmount()"
-                            (focusout)="calculateDueAmount()"
+                            (change)="calculateDueAmount()"
                             formControlName="payAmount"
                             id="payAmount"
                             placeholder="Pay Amount"
@@ -314,7 +314,7 @@
                             name="submitBox"
                             formControlName="submitBox"
                             id="submitBox"
-                            (focusout)="calculateBoxCount()"
+                            (change)="calculateBoxCount()"
                             (keydown)="resetBox()"
                             placeholder="Submit Box"
                             class="form-control"
