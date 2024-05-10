@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder, NgForm, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-update-order',
@@ -22,6 +22,8 @@ export class UpdateOrderComponent implements OnInit {
   AlertView = false;
   totalBillForRef: any;
   totalBoxForRef: any;
+  @ViewChild('datalogin', { read: NgForm }) FormEditTemp!: NgForm;
+
   constructor(private _http: HttpClient, private fb: FormBuilder) {}
   ngOnInit(): void {
     this.customerForm = this.fb.group({
@@ -90,22 +92,48 @@ export class UpdateOrderComponent implements OnInit {
     if (this.totalBillForRef != totalBill) {
       if (totalBill > this.totalBillForRef) {
         let diff = totalBill - this.totalBillForRef;
-        const existingDue =
+        let existingDue =
           parseFloat(this.customerForm.get('wallet').value) || 0;
         const currentDue = diff + existingDue;
         this.customerForm.patchValue({
           wallet: currentDue,
         });
+        if (parseFloat(this.productForm.get('payAmount').value)) {
+          const payAmount = parseFloat(this.productForm.get('payAmount').value);
+          const currentDue = diff + existingDue - payAmount;
+          this.customerForm.patchValue({
+            wallet: currentDue,
+          });
+        }
       }
       if (totalBill < this.totalBillForRef) {
         let diff = this.totalBillForRef - totalBill;
-        const existingDue =
+        let existingDue =
           parseFloat(this.customerForm.get('wallet').value) || 0;
-        const currentDue = existingDue - diff;
+        let currentDue = existingDue - diff;
         this.customerForm.patchValue({
           wallet: currentDue,
         });
+        if (parseFloat(this.productForm.get('payAmount').value)) {
+          const payAmount = parseFloat(this.productForm.get('payAmount').value);
+          const currentDue1 = currentDue - payAmount;
+          this.customerForm.patchValue({
+            wallet: currentDue1,
+          });
+        }
       }
+    }
+    if (
+      this.totalBillForRef == totalBill &&
+      parseFloat(this.productForm.get('payAmount').value)
+    ) {
+      const existingDue =
+        parseFloat(this.customerForm.get('wallet').value) || 0;
+      const payAmount = parseFloat(this.productForm.get('payAmount').value);
+      const currentDue = existingDue - payAmount;
+      this.customerForm.patchValue({
+        wallet: currentDue,
+      });
     }
   }
 
@@ -114,10 +142,44 @@ export class UpdateOrderComponent implements OnInit {
 
     if (currentBox > this.totalBoxForRef) {
       let diff = currentBox - this.totalBoxForRef;
+      let existingDueBox = parseFloat(this.customerForm.get('box').value) || 0;
+
+      const currentDue = diff + existingDueBox;
+      this.customerForm.patchValue({
+        box: currentDue,
+      });
+      if (parseFloat(this.productForm.get('submitBox').value)) {
+        const submitBox = parseFloat(this.productForm.get('submitBox').value);
+        const currentDue = diff + existingDueBox - submitBox;
+        this.customerForm.patchValue({
+          box: currentDue,
+        });
+      }
+    }
+    if (currentBox < this.totalBoxForRef) {
+      let diff = this.totalBoxForRef - currentBox;
       const existingDueBox =
         parseFloat(this.customerForm.get('box').value) || 0;
 
-      const currentDue = diff + existingDueBox;
+      let currentDue = existingDueBox - diff;
+      this.customerForm.patchValue({
+        box: currentDue,
+      });
+      if (parseFloat(this.productForm.get('submitBox').value)) {
+        const submitBox = parseFloat(this.productForm.get('submitBox').value);
+        const currentDue1 = currentDue - submitBox;
+        this.customerForm.patchValue({
+          box: currentDue1,
+        });
+      }
+    }
+    if (
+      this.totalBoxForRef == currentBox &&
+      parseFloat(this.productForm.get('submitBox').value)
+    ) {
+      const existingDue = parseFloat(this.customerForm.get('box').value) || 0;
+      const submitBox = parseFloat(this.productForm.get('submitBox').value);
+      const currentDue = existingDue - submitBox;
       this.customerForm.patchValue({
         box: currentDue,
       });
@@ -197,32 +259,38 @@ export class UpdateOrderComponent implements OnInit {
       // this.productForm.get('goodsWeight').disable();
     }
   }
-  calculateDueAmount() {
-    if (parseFloat(this.productForm.get('payAmount').value)) {
-      const totalBill =
-        parseFloat(this.productForm.get('totalBill').value) || 0;
-      const existingDue =
-        parseFloat(this.customerForm.get('wallet').value) || 0;
-      const payAmount = parseFloat(this.productForm.get('payAmount').value);
-      const currentDue = totalBill + existingDue - payAmount;
-      this.customerForm.patchValue({
-        wallet: currentDue,
-      });
-    }
-  }
+  // // calculateDueAmount() {
+  // //   if (parseFloat(this.productForm.get('payAmount').value)) {
+  // //     const totalBill =
+  // //       parseFloat(this.productForm.get('totalBill').value) || 0;
+  // //     const existingDue =
+  // //       parseFloat(this.customerForm.get('wallet').value) || 0;
+  // //     const payAmount = parseFloat(this.productForm.get('payAmount').value);
+  // //     let currentDue;
+  // //     if (this.totalBillForRef == totalBill) {
+  // //       currentDue = existingDue - payAmount;
+  // //     } else {
+  // //       currentDue = totalBill + existingDue - payAmount;
+  // //     }
+  // //     this.calculateDueBill();
+  // //     this.customerForm.patchValue({
+  // //       wallet: currentDue,
+  // //     });
+  // //   }
+  // }
 
-  calculateBoxCount() {
-    if (parseFloat(this.productForm.get('submitBox').value)) {
-      const currentBox = parseFloat(this.productForm.get('box').value) || 0;
-      const existingDueBox =
-        parseFloat(this.customerForm.get('box').value) || 0;
-      const submitBox = parseFloat(this.productForm.get('submitBox').value);
-      const remainingBox = currentBox + existingDueBox - submitBox;
-      this.customerForm.patchValue({
-        box: remainingBox,
-      });
-    }
-  }
+  // calculateBoxCount() {
+  //   if (parseFloat(this.productForm.get('submitBox').value)) {
+  //     const currentBox = parseFloat(this.productForm.get('box').value) || 0;
+  //     const existingDueBox =
+  //       parseFloat(this.customerForm.get('box').value) || 0;
+  //     const submitBox = parseFloat(this.productForm.get('submitBox').value);
+  //     const remainingBox = currentBox + existingDueBox - submitBox;
+  //     this.customerForm.patchValue({
+  //       box: remainingBox,
+  //     });
+  //   }
+  // }
 
   resetDueAmount() {
     this.customerForm.patchValue({
@@ -314,5 +382,12 @@ export class UpdateOrderComponent implements OnInit {
         console.log(res);
         this.AlertView = true;
       });
+  }
+
+  closeModal() {
+    this.AlertView = false;
+    this.FormEditTemp.resetForm();
+    this.customerForm.reset();
+    this.productForm.reset();
   }
 }

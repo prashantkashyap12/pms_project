@@ -187,6 +187,7 @@ export class CustomerNewOrderComponent implements OnInit {
       });
     }
   }
+
   calculateBoxCount() {
     if (parseFloat(this.productForm.get('submitBox').value)) {
       const currentBox = parseFloat(this.productForm.get('box').value) || 0;
@@ -244,10 +245,13 @@ export class CustomerNewOrderComponent implements OnInit {
     if (this.productForm.value.payAmount == 0) {
       status = 'Not Paid';
     } else if (
-      this.productForm.value.payAmount == this.productForm.value.totalBill
+      this.productForm.value.payAmount == this.productForm.value.totalBill ||
+      this.customerForm?.get('wallet')?.value == 0
     ) {
       status = 'Fully Paid';
-    } else {
+    } else if (this.customerForm?.get('wallet')?.value != 0) {
+      console.log(this.customerForm.value.wallet);
+
       status = 'Due Pay';
     }
 
@@ -271,8 +275,8 @@ export class CustomerNewOrderComponent implements OnInit {
     };
 
     if (
-      this.customerForm?.get('wallet')?.value ||
-      this.customerForm?.get('box')?.value
+      this.productForm.get('payAmount').value ||
+      this.productForm.get('submitBox').value
     ) {
       this.customerList.filter((ele: any) => {
         if (ele.id == this.customerForm.value.selectCustomer) {
@@ -286,6 +290,7 @@ export class CustomerNewOrderComponent implements OnInit {
         }
       });
     }
+
     this._http.post(this.orders, postData).subscribe((res) => {
       console.log(res);
       this.AlertView = true;
@@ -293,5 +298,13 @@ export class CustomerNewOrderComponent implements OnInit {
       // this.productForm.reset();
       // this.generateBillNumber();
     });
+  }
+
+  closeModal() {
+    this.AlertView = false;
+    this.FormEditTemp.resetForm();
+    this.customerForm.reset();
+    this.productForm.reset();
+    this.generateBillNumber();
   }
 }

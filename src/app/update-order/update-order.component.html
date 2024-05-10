@@ -300,7 +300,7 @@
                             type="text"
                             name="payAmount"
                             (keydown)="resetDueAmount()"
-                            (change)="calculateDueAmount()"
+                            (blur)="calculateDueBill()"
                             formControlName="payAmount"
                             id="payAmount"
                             placeholder="Pay Amount"
@@ -314,7 +314,7 @@
                             name="submitBox"
                             formControlName="submitBox"
                             id="submitBox"
-                            (change)="calculateBoxCount()"
+                            (blur)="updateBoxCount()"
                             (keydown)="resetBox()"
                             placeholder="Submit Box"
                             class="form-control"
@@ -488,6 +488,7 @@
             type="button"
             class="btn btn-secondary"
             data-bs-dismiss="modal"
+            (click)="closeModal()"
           >
             Close
           </button>
