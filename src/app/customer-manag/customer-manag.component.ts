@@ -10,12 +10,16 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 export class CustomerManagComponent implements OnInit {
   dataTable: any = [];
   id: any;
+  ordersList: any;
+  orderIDs: any;
   constructor(private _http: HttpClient) {}
   ngOnInit(): void {
     this.dataget();
+    this.getOrdersJson();
   }
 
   private auth = 'http://localhost:3000/customerManagement';
+  private orders = 'http://localhost:3000/orders';
 
   btndataView = true;
   AlertView = false;
@@ -45,6 +49,12 @@ export class CustomerManagComponent implements OnInit {
     this.dataget();
   }
 
+  getOrdersJson() {
+    this._http.get(this.orders).subscribe((res) => {
+      const dataupdate = JSON.stringify(res);
+      this.ordersList = JSON.parse(dataupdate);
+    });
+  }
   // Delete Data -- DONE
   del(id: any, i: any) {
     if (
@@ -58,6 +68,19 @@ export class CustomerManagComponent implements OnInit {
       console.log(i, 'index');
       const index = i + 1;
       console.log(`${this.auth}/${id}`);
+
+      this.orderIDs = this.ordersList.filter(
+        (ele: any) => ele.customerId == id
+      );
+      console.log(this.orderIDs, 'ORDERIDS');
+
+      if (this.orderIDs?.length) {
+        this.orderIDs.map((ele: any) => {
+          this._http.delete(`${this.orders}/${ele.id}`).subscribe((res) => {
+            console.log(res);
+          });
+        });
+      }
 
       this._http.delete(`${this.auth}/${id}`).subscribe((res) => {
         console.log(res);
