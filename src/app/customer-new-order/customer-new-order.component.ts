@@ -23,7 +23,12 @@ export class CustomerNewOrderComponent implements OnInit {
   totalBox: any;
   // totalDue: number;
 
-  constructor(private _http: HttpClient, private fb: FormBuilder) {}
+  constructor(private _http: HttpClient, private fb: FormBuilder) {
+    const now = new Date();
+    this.currentDate = this.formatDate(now);
+    this.currentTime = this.formatTime(now);
+  }
+
   ngOnInit(): void {
     this.customerForm = this.fb.group({
       selectCustomer: [null, Validators.required],
@@ -39,8 +44,8 @@ export class CustomerNewOrderComponent implements OnInit {
       totalWeight: [null, Validators.required],
       goodsWeight: [null, Validators.required],
       totalBill: [null, Validators.required],
-      payAmount: [null],
-      submitBox: [null],
+      payAmount: [0],
+      submitBox: [0],
     });
     this.getOrdersJson();
     this.getCustomers();
@@ -74,6 +79,18 @@ export class CustomerNewOrderComponent implements OnInit {
   //   }
   // }
 
+  formatDate(date: Date): string {
+    const day = ('0' + date.getDate()).slice(-2); // Add leading zero if necessary
+    const month = ('0' + (date.getMonth() + 1)).slice(-2); // Months are 0-based, add leading zero
+    const year = date.getFullYear();
+    return `${day}/${month}/${year}`; // Return as DD/MM/YYYY
+  }
+
+  formatTime(date: Date): string {
+    // Format as HH:mm for the time input compatibility
+    return date.toISOString().split('T')[1].substring(0, 5);
+  }
+
   // Fatch Data   -- DONE
   getOrdersJson() {
     this._http.get(this.orders).subscribe((res) => {
@@ -84,6 +101,14 @@ export class CustomerNewOrderComponent implements OnInit {
         this.generateBillNumber();
       }, 1000);
     });
+  }
+
+  onDateChange(eve: any) {
+    const newDate = eve.target.value;
+    const date = new Date(newDate);
+    this.currentDate = `${date.getDate()}/${
+      date.getMonth() + 1
+    }/${date.getFullYear()}`;
   }
 
   getCustomers() {
@@ -220,7 +245,10 @@ export class CustomerNewOrderComponent implements OnInit {
   saveOrder() {
     console.log(this.productForm.get('payAmount').value);
 
-    if (this.productForm.get('payAmount').value === null) {
+    if (
+      this.productForm.get('payAmount').value === null ||
+      this.productForm.get('payAmount').value === 0
+    ) {
       const totalBill =
         parseFloat(this.productForm.get('totalBill').value) || 0;
       const existingDue =
@@ -231,7 +259,10 @@ export class CustomerNewOrderComponent implements OnInit {
       });
     }
 
-    if (this.productForm.get('submitBox').value === null) {
+    if (
+      this.productForm.get('submitBox').value === null ||
+      this.productForm.get('payAmount').value === 0
+    ) {
       const currentBox = parseFloat(this.productForm.get('box').value) || 0;
       const existingDueBox =
         parseFloat(this.customerForm.get('box').value) || 0;
@@ -242,7 +273,10 @@ export class CustomerNewOrderComponent implements OnInit {
     }
 
     let status;
-    if (this.productForm.value.payAmount == 0) {
+    if (
+      this.productForm.value.payAmount == 0 ||
+      this.productForm.value.payAmount == null
+    ) {
       status = 'Not Paid';
     } else if (
       this.productForm.value.payAmount == this.productForm.value.totalBill ||
@@ -274,22 +308,20 @@ export class CustomerNewOrderComponent implements OnInit {
       ],
     };
 
-    if (
-      this.productForm.get('payAmount').value ||
-      this.productForm.get('submitBox').value
-    ) {
-      this.customerList.filter((ele: any) => {
-        if (ele.id == this.customerForm.value.selectCustomer) {
-          ele['Wallet'] = this.customerForm?.get('wallet')?.value;
-          ele['custBox'] = this.customerForm?.get('box')?.value;
-          this._http
-            .put(this.customers + '/' + ele.id, ele)
-            .subscribe((res) => {
-              console.log(res);
-            });
-        }
-      });
-    }
+    // if (
+    //   this.productForm.get('payAmount').value ||
+    //   this.productForm.get('submitBox').value
+    // ) {
+    this.customerList.filter((ele: any) => {
+      if (ele.id == this.customerForm.value.selectCustomer) {
+        ele['Wallet'] = this.customerForm?.get('wallet')?.value;
+        ele['custBox'] = this.customerForm?.get('box')?.value;
+        this._http.put(this.customers + '/' + ele.id, ele).subscribe((res) => {
+          console.log(res);
+        });
+      }
+    });
+    // }
 
     this._http.post(this.orders, postData).subscribe((res) => {
       console.log(res);
@@ -301,10 +333,12 @@ export class CustomerNewOrderComponent implements OnInit {
   }
 
   closeModal() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
     this.AlertView = false;
     this.FormEditTemp.resetForm();
     this.customerForm.reset();
     this.productForm.reset();
+    this.getOrdersJson();
     this.generateBillNumber();
   }
 }

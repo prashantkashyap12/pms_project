@@ -42,13 +42,14 @@ export class UpdateOrderComponent implements OnInit {
       totalWeight: [null, Validators.required],
       goodsWeight: [null, Validators.required],
       totalBill: [null, Validators.required],
-      payAmount: [null, Validators.required],
+      payAmount: [0, Validators.required],
       status: [{ value: '' }],
-      submitBox: [null, Validators.required],
+      submitBox: [0, Validators.required],
     });
     this.getOrdersJson();
     this.getCustomers();
     this.getProducts();
+    this.updateDateTime();
   }
 
   private orders = 'http://localhost:3000/orders';
@@ -63,8 +64,8 @@ export class UpdateOrderComponent implements OnInit {
       const selectedOrder = this.datatable.filter(
         (ele: any) => ele.orderId == this.billNumber
       );
-      this.currentDate = selectedOrder[0].autoDate;
-      this.currentTime = selectedOrder[0].autoTime;
+      // this.currentDate = selectedOrder[0].autoDate;
+      // this.currentTime = selectedOrder[0].autoTime;
       this.customerForm.patchValue({
         selectCustomer: selectedOrder[0].customerId,
       });
@@ -84,7 +85,35 @@ export class UpdateOrderComponent implements OnInit {
       this.totalBoxForRef = selectedOrder[0].items[0].boxNug;
       this.selectCustomer();
       console.log(selectedOrder, 'ORDER');
+      // const payLoad = {
+      //   items: [
+      //     {
+      //       id: this.productForm.value.id,
+      //       boxNug: this.productForm.value.box,
+      //       totalWeight: this.productForm.value.totalWeight,
+      //       goodsWeight: this.productForm.value.goodsWeight,
+      //       totalBill: this.productForm.value.totalBill,
+      //       payAmount: this.productForm.value.payAmount,
+      //       submitBox: this.productForm.value.submitBox,
+      //     },
+      //   ],
+      //   orderId: this.billNumber,
+      //   customerId: this.customerForm.value.selectCustomer,
+      //   status: this.productForm.value.status,
+      //   autoDate: this.currentDate,
+      //   autoTime: this.currentTime,
+      // };
+
+      // localStorage.setItem('order', JSON.stringify(payLoad));
     }
+  }
+
+  updateDateTime(): void {
+    const now = new Date();
+
+    this.currentDate = now.toISOString().split('T')[0];
+
+    this.currentTime = now.toTimeString().split(' ')[0];
   }
 
   calculateDueBill() {
@@ -305,45 +334,51 @@ export class UpdateOrderComponent implements OnInit {
   }
 
   saveOrder() {
-    if (this.productForm.get('payAmount').value === null) {
-      const totalBill =
-        parseFloat(this.productForm.get('totalBill').value) || 0;
-      const existingDue =
-        parseFloat(this.customerForm.get('wallet').value) || 0;
-      const currentDue = totalBill + existingDue;
-      this.customerForm.patchValue({
-        wallet: currentDue,
-      });
-    }
+    // if (
+    //   this.productForm.get('payAmount').value === null ||
+    //   this.productForm.get('payAmount').value === 0
+    // ) {
+    // const totalBill =
+    //   parseFloat(this.productForm.get('totalBill').value) || 0;
+    // const existingDue =
+    //   parseFloat(this.customerForm.get('wallet').value) || 0;
+    // const currentDue = totalBill + existingDue;
+    // this.customerForm.patchValue({
+    //   wallet: currentDue,
+    // });
+    //   this.calculateDueBill();
+    // }
 
-    if (this.productForm.get('submitBox').value === null) {
-      const currentBox = parseFloat(this.productForm.get('box').value) || 0;
-      const existingDueBox =
-        parseFloat(this.customerForm.get('box').value) || 0;
-      const remainingBox = currentBox + existingDueBox;
-      this.customerForm.patchValue({
-        box: remainingBox,
-      });
-    }
+    // if (
+    //   this.productForm.get('submitBox').value === null ||
+    //   this.productForm.get('payAmount').value === 0
+    // ) {
+    // const currentBox = parseFloat(this.productForm.get('box').value) || 0;
+    // const existingDueBox =
+    //   parseFloat(this.customerForm.get('box').value) || 0;
+    // const remainingBox = currentBox + existingDueBox;
+    // this.customerForm.patchValue({
+    //   box: remainingBox,
+    // });
+    //   this.updateBoxCount();
+    // }
 
-    if (
-      this.productForm.get('payAmount').value ||
-      this.productForm.get('submitBox').value
-    ) {
-      this.customerList.filter((ele: any) => {
-        if (ele.id == this.customerForm.value.selectCustomer) {
-          ele['Wallet'] = this.customerForm?.get('wallet')?.value;
-          ele['custBox'] = this.customerForm?.get('box')?.value;
-          console.log(ele, 'customer');
+    // if (
+    //   this.productForm.get('payAmount').value ||
+    //   this.productForm.get('submitBox').value
+    // ) {
+    this.customerList.filter((ele: any) => {
+      if (ele.id == this.customerForm.value.selectCustomer) {
+        ele['Wallet'] = this.customerForm?.get('wallet')?.value;
+        ele['custBox'] = this.customerForm?.get('box')?.value;
+        console.log(ele, 'customer');
 
-          this._http
-            .put(this.customers + '/' + ele.id, ele)
-            .subscribe((res) => {
-              console.log(res);
-            });
-        }
-      });
-    }
+        this._http.put(this.customers + '/' + ele.id, ele).subscribe((res) => {
+          console.log(res);
+        });
+      }
+    });
+    // }
     let status;
     if (this.productForm.value.payAmount == 0) {
       status = 'Not Paid';
@@ -385,6 +420,7 @@ export class UpdateOrderComponent implements OnInit {
   }
 
   closeModal() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
     this.AlertView = false;
     this.FormEditTemp.resetForm();
     this.customerForm.reset();

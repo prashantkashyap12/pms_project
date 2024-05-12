@@ -70,6 +70,7 @@ export class CustomerWorkingReportListComponent implements OnInit {
           });
         });
       });
+      this.datatable.reverse();
       console.log(res);
     });
   }
@@ -139,5 +140,9 @@ export class CustomerWorkingReportListComponent implements OnInit {
   clearFilter(dataLogin: NgForm) {
     this.FormEditTemp.resetForm();
     this.getOrdersJson();
+  }
+
+  closeModal() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 }

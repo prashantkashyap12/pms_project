@@ -153,8 +153,18 @@
                       <td>{{ order.items[0].totalWeight }}(kg)</td>
                       <td>{{ order.items[0].goodsWeight }}(kg)</td>
                       <td>{{ order.items[0].totalBill }} ₹</td>
-                      <td>{{ order.items[0].payAmount }} ₹</td>
-                      <td>{{ order.items[0].submitBox }}</td>
+                      <td>
+                        <span *ngIf="order.items[0].payAmount"
+                          >{{ order.items[0].payAmount }} ₹</span
+                        >
+                        <span *ngIf="!order.items[0].payAmount">-</span>
+                      </td>
+                      <td>
+                        <span *ngIf="order.items[0].submitBox"
+                          >{{ order.items[0].submitBox }}
+                        </span>
+                        <span *ngIf="!order.items[0].submitBox">-</span>
+                      </td>
                       <td>
                         <span
                           *ngIf="order.status == 'Fully Paid'"
@@ -335,6 +345,7 @@
             type="button"
             class="btn btn-secondary"
             data-bs-dismiss="modal"
+            (click)="closeModal()"
           >
             Close
           </button>

@@ -80,9 +80,9 @@
                           class="form-control"
                           id="orderdate"
                           name="currentDate"
+                          (change)="onDateChange($event)"
                           [(ngModel)]="currentDate"
                           placeholder="Date"
-                          disabled
                           required
                         />&nbsp;&nbsp;
                         <input
@@ -92,7 +92,6 @@
                           name="currentTime"
                           [(ngModel)]="currentTime"
                           placeholder="Date"
-                          disabled
                           required
                         />
                       </div>
@@ -293,26 +292,39 @@
                           <input
                             type="text"
                             name="payAmount"
-                            (keydown)="resetDueAmount()"
-                            (blur)="calculateDueAmount()"
                             formControlName="payAmount"
                             id="payAmount"
                             placeholder="Pay Amount"
                             class="form-control"
                           />
                         </div>
-                        <div class="col-md-6"></div>
+                        <div class="col-md-3">
+                          <button
+                            class="btn btn-primary"
+                            type="button"
+                            (click)="calculateDueAmount()"
+                          >
+                            Calculate Due Amount
+                          </button>
+                        </div>
                         <div class="col-md-3">
                           <input
                             type="text"
                             name="submitBox"
                             formControlName="submitBox"
                             id="submitBox"
-                            (blur)="calculateBoxCount()"
-                            (keydown)="resetBox()"
                             placeholder="Submit Box"
                             class="form-control"
                           />
+                        </div>
+                        <div class="col-md-3">
+                          <button
+                            class="btn btn-primary"
+                            type="button"
+                            (click)="calculateBoxCount()"
+                          >
+                            Calculate Due Box
+                          </button>
                         </div>
                       </div>
                     </form>

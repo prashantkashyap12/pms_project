@@ -88,6 +88,7 @@
                           type="date"
                           class="form-control"
                           [(ngModel)]="currentDate"
+                          disabled="true"
                           id="orderdate"
                           name="currentDate"
                           placeholder="Date"
@@ -98,6 +99,7 @@
                           class="form-control"
                           [(ngModel)]="currentTime"
                           id="orderdate"
+                          disabled="true"
                           name="currentTime"
                           placeholder="Date"
                           required
@@ -245,9 +247,6 @@
                           <td>
                             <input
                               type="text"
-                              (change)="
-                                calculateGoodsWeight(); updateBoxCount()
-                              "
                               formControlName="box"
                               name="box"
                               class="form-control"
@@ -274,7 +273,6 @@
                             <input
                               type="text"
                               formControlName="totalBill"
-                              (change)="calculateDueBill()"
                               name="totalBill"
                               class="form-control"
                             />
@@ -299,26 +297,39 @@
                           <input
                             type="text"
                             name="payAmount"
-                            (keydown)="resetDueAmount()"
-                            (blur)="calculateDueBill()"
                             formControlName="payAmount"
                             id="payAmount"
                             placeholder="Pay Amount"
                             class="form-control"
                           />
                         </div>
-                        <div class="col-md-6"></div>
+                        <div class="col-md-3">
+                          <button
+                            class="btn btn-primary"
+                            type="button"
+                            (click)="calculateDueBill()"
+                          >
+                            Calculate Due Amount
+                          </button>
+                        </div>
                         <div class="col-md-3">
                           <input
                             type="text"
                             name="submitBox"
                             formControlName="submitBox"
                             id="submitBox"
-                            (blur)="updateBoxCount()"
-                            (keydown)="resetBox()"
                             placeholder="Submit Box"
                             class="form-control"
                           />
+                        </div>
+                        <div class="col-md-3">
+                          <button
+                            class="btn btn-primary"
+                            type="button"
+                            (click)="updateBoxCount()"
+                          >
+                            Calculate Due Box
+                          </button>
                         </div>
                       </div>
                     </form>
