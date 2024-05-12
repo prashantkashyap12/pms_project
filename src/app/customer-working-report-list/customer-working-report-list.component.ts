@@ -70,7 +70,8 @@ export class CustomerWorkingReportListComponent implements OnInit {
           });
         });
       });
-      this.datatable.reverse();
+      // this.datatable.reverse();
+      this.sortOrders();
       console.log(res);
     });
   }
@@ -92,6 +93,16 @@ export class CustomerWorkingReportListComponent implements OnInit {
 
   normalizeString(input: string): string {
     return input.replace(/\s+/g, '').toLowerCase();
+  }
+
+  sortOrders() {
+    this.datatable.sort((a: any, b: any) => {
+      if (a.autoDate > b.autoDate) return -1;
+      if (a.autoDate < b.autoDate) return 1;
+      if (a.autoTime > b.autoTime) return -1;
+      if (a.autoTime < b.autoTime) return 1;
+      return 0;
+    });
   }
 
   searchOrder(event: any) {

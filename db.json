@@ -5,8 +5,8 @@
       "LastName": "Dinesh",
       "custContact": "988954987",
       "altcontact": "6879465874",
-      "Wallet": 25000,
-      "custBox": 22,
+      "Wallet": 9000,
+      "custBox": 15,
       "custAddres": "46/906/D1 New Abadi nagla ajeeta agra",
       "custlandMark": "mandir",
       "custCity": "delhi",
@@ -219,6 +219,44 @@
           "totalBill": "10000",
           "payAmount": "5000",
           "submitBox": "8"
+        }
+      ]
+    },
+    {
+      "id": "0575",
+      "orderId": "#SKU4530",
+      "autoDate": "2024-05-02",
+      "autoTime": "02:15:57",
+      "status": "Due Pay",
+      "customerId": "1",
+      "items": [
+        {
+          "id": "2",
+          "boxNug": "0",
+          "totalWeight": "0",
+          "goodsWeight": 0,
+          "totalBill": "0",
+          "payAmount": "15000",
+          "submitBox": "10"
+        }
+      ]
+    },
+    {
+      "id": "8637",
+      "orderId": "#SKU4531",
+      "autoDate": "2024-05-02",
+      "autoTime": "12:48:27",
+      "status": "Due Pay",
+      "customerId": "1",
+      "items": [
+        {
+          "id": "1",
+          "boxNug": "10",
+          "totalWeight": "100",
+          "goodsWeight": 80,
+          "totalBill": "1000",
+          "payAmount": "2000",
+          "submitBox": "7"
         }
       ]
     }

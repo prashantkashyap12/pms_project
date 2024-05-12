@@ -23,11 +23,7 @@ export class CustomerNewOrderComponent implements OnInit {
   totalBox: any;
   // totalDue: number;
 
-  constructor(private _http: HttpClient, private fb: FormBuilder) {
-    const now = new Date();
-    this.currentDate = this.formatDate(now);
-    this.currentTime = this.formatTime(now);
-  }
+  constructor(private _http: HttpClient, private fb: FormBuilder) {}
 
   ngOnInit(): void {
     this.customerForm = this.fb.group({
@@ -78,18 +74,6 @@ export class CustomerNewOrderComponent implements OnInit {
   //     }
   //   }
   // }
-
-  formatDate(date: Date): string {
-    const day = ('0' + date.getDate()).slice(-2); // Add leading zero if necessary
-    const month = ('0' + (date.getMonth() + 1)).slice(-2); // Months are 0-based, add leading zero
-    const year = date.getFullYear();
-    return `${day}/${month}/${year}`; // Return as DD/MM/YYYY
-  }
-
-  formatTime(date: Date): string {
-    // Format as HH:mm for the time input compatibility
-    return date.toISOString().split('T')[1].substring(0, 5);
-  }
 
   // Fatch Data   -- DONE
   getOrdersJson() {
